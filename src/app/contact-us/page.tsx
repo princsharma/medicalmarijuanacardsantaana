@@ -10,8 +10,7 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
-import { ContactForm } from "@/components/forms/ContactForm";
-import { OfficeMapSection } from "@/components/sections/OfficeMapSection";
+// import { ContactForm } from "@/components/forms/ContactForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -121,20 +120,19 @@ export default function ContactUsPage() {
           aria-hidden="true"
         />
         <Container className="relative">
-          <div className="grid items-stretch gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
-            <aside className="flex flex-col rounded-3xl border border-[#dce6dd] bg-gradient-to-br from-[#123c31] to-[#0c3027] p-7 text-white shadow-elevated sm:p-9">
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-brand-200">
-                Reach our team
-              </p>
-              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                We are here when you need us.
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-brand-100/80">
-                Choose what works best for you. We are happy to answer questions about the
-                evaluation process and getting started.
-              </p>
+          <aside className="mx-auto flex w-full max-w-4xl flex-col rounded-3xl border border-[#dce6dd] bg-gradient-to-br from-[#123c31] to-[#0c3027] p-7 text-center text-white shadow-elevated sm:p-9">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-brand-200">
+              Reach our team
+            </p>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+              We are here when you need us.
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-brand-100/80">
+              Choose what works best for you. We are happy to answer questions about the
+              evaluation process and getting started.
+            </p>
 
-              <div className="mt-8 space-y-5">
+            <div className="mt-8 space-y-5 text-left">
                 {contactPageContent.methods.map((method) => {
                   const Icon = iconMap[method.title as keyof typeof iconMap];
 
@@ -173,52 +171,18 @@ export default function ContactUsPage() {
                     </div>
                   );
                 })}
-              </div>
+            </div>
 
-              <div className="mt-auto flex items-start gap-3 border-t border-white/15 pt-6">
-                <ShieldCheck className="mt-0.5 size-4 shrink-0 text-brand-200" aria-hidden="true" />
-                <p className="text-xs leading-relaxed text-brand-100/75">
-                  For your privacy, please do not include detailed medical records in email or
-                  the contact form.
-                </p>
-              </div>
-            </aside>
-
-            <section className="overflow-hidden rounded-3xl border border-[#dce6dd] bg-white shadow-card">
-              <div className="border-b border-neutral-100 bg-gradient-to-r from-[#f8faf6] to-white px-6 py-6 sm:px-9 sm:py-8">
-                <div className="flex items-start gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-brand-100">
-                    <Mail className="size-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-700">
-                      Send us a message
-                    </p>
-                    <h2 className="mt-1 font-display text-2xl font-bold tracking-tight text-[#123c31]">
-                      How can we help?
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                      Share a few details and we will get back to you within one business day.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 sm:p-9">
-                <ContactForm />
-                <p className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-neutral-500">
-                  <ShieldCheck
-                    className="mt-0.5 size-4 shrink-0 text-brand-700"
-                    aria-hidden="true"
-                  />
-                  Please don&apos;t include sensitive medical information in this form.
-                </p>
-              </div>
-            </section>
-          </div>
+            <div className="mt-8 flex items-start justify-center gap-3 border-t border-white/15 pt-6 text-left">
+              <ShieldCheck className="mt-0.5 size-4 shrink-0 text-brand-200" aria-hidden="true" />
+              <p className="text-xs leading-relaxed text-brand-100/75">
+                For your privacy, please do not include detailed medical records in email or
+                the contact form.
+              </p>
+            </div>
+          </aside>
         </Container>
       </section>
-
-      <OfficeMapSection />
     </>
   );
 }
