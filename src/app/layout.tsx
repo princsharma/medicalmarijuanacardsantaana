@@ -49,13 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: siteConfig.description,
 
     icons: {
-      icon: [
-        { url: "/media/favicon-16.png", sizes: "16x16", type: "image/png" },
-        { url: "/media/favicon-32.png", sizes: "32x32", type: "image/png" },
-        { url: "/media/favicon-512.png", sizes: "512x512", type: "image/png" },
-        { url: "/media/favicon.ico", type: "image/x-icon" },
-      ],
-      apple: [{ url: "/media/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+      icon: "/media/favicon.ico",
     },
 
     openGraph: {
