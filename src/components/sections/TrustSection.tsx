@@ -219,9 +219,9 @@ function AnimatedStatCard({
                   </span>
                 ) : null}
               </p>
-              <p className="mt-1 font-display text-sm font-bold text-neutral-800 sm:text-base">
+              <h3 className="mt-1 font-display text-sm font-bold text-neutral-800 sm:text-base">
                 {stat.label}
-              </p>
+              </h3>
               <p className="mt-1 text-xs text-neutral-500">{statHints[index]}</p>
             </div>
 

@@ -3,7 +3,6 @@ export const mainNav = [
   { label: "Benefits", href: "/#benefits" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Blog", href: "/blog" },
   { label: "Authors", href: "/our-authors" },
   { label: "Contact Us", href: "/contact-us" },
 ] as const;

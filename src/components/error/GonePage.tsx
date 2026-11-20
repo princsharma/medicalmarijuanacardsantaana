@@ -26,16 +26,13 @@ export function GonePage() {
 
         <LinkLogo />
 
-        <p className="mt-3 text-sm font-semibold text-brand-800/80">{siteConfig.address.city}</p>
-
         <h1 className="mt-8 max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight text-[#123c31] sm:text-5xl lg:text-[3.4rem]">
           This Page Has Been Permanently Removed
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-neutral-600 sm:text-lg">
           The content you are looking for is no longer available and has been removed as
-          part of our site update. Your path to a Santa Ana medical marijuana card is still
-          right here.
+          part of our site update. Your path to a medical marijuana card is still right here.
         </p>
 
         <div className="mt-9 flex w-full max-w-lg flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -77,13 +74,13 @@ export function GonePage() {
 
 function LinkLogo() {
   return (
-    <Link href="/" className="mt-8 inline-flex flex-col items-center" aria-label={`${siteConfig.name} home`}>
+    <Link href="/" className="mt-8 inline-flex flex-col items-center">
       <Image
         src="/media/brand-logo.webp"
         alt={siteConfig.name}
         width={1917}
         height={368}
-        className="h-auto w-56 sm:w-64"
+        className="h-auto w-56 mix-blend-multiply sm:w-64"
         sizes="(max-width: 640px) 224px, 256px"
         priority
       />

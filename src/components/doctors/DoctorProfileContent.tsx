@@ -149,7 +149,7 @@ export function DoctorProfileContent({ doctor, profile }: DoctorProfileContentPr
                       <GraduationCap className="size-5" aria-hidden="true" />
                     </span>
                     <div>
-                      <p className="font-display font-bold text-[#123c31]">{item.school}</p>
+                      <h3 className="font-display font-bold text-[#123c31]">{item.school}</h3>
                       {item.detail ? (
                         <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
                       ) : null}

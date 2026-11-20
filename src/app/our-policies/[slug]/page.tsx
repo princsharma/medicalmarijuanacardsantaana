@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: policy.title,
     description: policy.description,
     path: getPolicyHref(policy.slug),
+    absoluteTitle: policy.slug === "hipaa-compliance",
     ogImage: DEFAULT_OG_CARD_PATH,
     ogImageDimensions: "auto",
   });
