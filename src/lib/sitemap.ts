@@ -11,7 +11,7 @@ const STATIC_PAGES = [
   "/contact-us",
   "/doctors",
   "/our-authors",
-  "/blog",
+  // "/blog",
   "/faq",
   "/reviews",
   "/our-policies",
