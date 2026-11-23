@@ -2,7 +2,7 @@
 
 > Medical Marijuana Card Santa Ana provides information and access to online medical cannabis evaluations for people in Santa Ana and the surrounding Orange County area. The service connects applicants with California-licensed physicians for a telehealth assessment. A physician determines whether a written medical marijuana recommendation is appropriate; submitting an application does not guarantee approval.
 
-Canonical website: https://medicalmarijunacardsantaana.com/
+Canonical website: https://medicalmarijuanacardsantaana.com/
 
 ## What This Website Helps Patients Do
 
@@ -20,11 +20,11 @@ The website describes a telehealth evaluation service. It is not a cannabis disp
 
 The main service page explains the process and is the best starting point for people who want to apply:
 
-- [Medical marijuana card in Santa Ana](https://medicalmarijunacardsantaana.com/): Overview of the local evaluation service, application steps, plan options, benefits, qualifying-condition information, and FAQs.
-- [How the process works](https://medicalmarijunacardsantaana.com/#process): Complete the online intake, attend an audio or video consultation with a California-licensed physician, and receive a written recommendation if approved.
-- [Application section](https://medicalmarijunacardsantaana.com/#apply): Entry point for starting an application.
-- [Pricing and plans](https://medicalmarijunacardsantaana.com/#pricing): Details of the listed Basic, Gold, and Platinum options.
-- [Frequently asked questions](https://medicalmarijunacardsantaana.com/#faq): Answers about applying, timing, eligibility, privacy, benefits, and renewals.
+- [Medical marijuana card in Santa Ana](https://medicalmarijuanacardsantaana.com/): Overview of the local evaluation service, application steps, plan options, benefits, qualifying-condition information, and FAQs.
+- [How the process works](https://medicalmarijuanacardsantaana.com/#process): Complete the online intake, attend an audio or video consultation with a California-licensed physician, and receive a written recommendation if approved.
+- [Application section](https://medicalmarijuanacardsantaana.com/#apply): Entry point for starting an application.
+- [Pricing and plans](https://medicalmarijuanacardsantaana.com/#pricing): Details of the listed Basic, Gold, and Platinum options.
+- [Frequently asked questions](https://medicalmarijuanacardsantaana.com/#faq): Answers about applying, timing, eligibility, privacy, benefits, and renewals.
 
 ## Plans Listed on the Website
 
@@ -61,21 +61,21 @@ The website states that its intake and telehealth process is HIPAA-compliant and
 ## Website Navigation and Reference Pages
 
 ### Service and patient information
-- [About Us](https://medicalmarijunacardsantaana.com/about-us)
-- [Our Doctors](https://medicalmarijunacardsantaana.com/doctors)
-- [Patient Reviews](https://medicalmarijunacardsantaana.com/reviews)
-- [FAQ](https://medicalmarijunacardsantaana.com/faq)
-- [Contact Us](https://medicalmarijunacardsantaana.com/contact-us)
+- [About Us](https://medicalmarijuanacardsantaana.com/about-us)
+- [Our Doctors](https://medicalmarijuanacardsantaana.com/doctors)
+- [Patient Reviews](https://medicalmarijuanacardsantaana.com/reviews)
+- [FAQ](https://medicalmarijuanacardsantaana.com/faq)
+- [Contact Us](https://medicalmarijuanacardsantaana.com/contact-us)
 
 ### Policies and patient rights
-- [Refund Policy](https://medicalmarijunacardsantaana.com/our-policies/refund-policy)
-- [Editorial Policy](https://medicalmarijunacardsantaana.com/our-policies/editorial-policy)
-- [Terms of Use](https://medicalmarijunacardsantaana.com/our-policies/terms-of-use)
-- [Disclaimer](https://medicalmarijunacardsantaana.com/our-policies/disclaimer)
-- [Privacy Policy](https://medicalmarijunacardsantaana.com/our-policies/privacy-policy)
-- [HIPAA Compliance](https://medicalmarijunacardsantaana.com/our-policies/hipaa-compliance)
-- [Consent for Telehealth](https://medicalmarijunacardsantaana.com/our-policies/consent-for-telehealth)
-- [Accessibility Statement](https://medicalmarijunacardsantaana.com/our-policies/accessibility-statement)
+- [Refund Policy](https://medicalmarijuanacardsantaana.com/our-policies/refund-policy)
+- [Editorial Policy](https://medicalmarijuanacardsantaana.com/our-policies/editorial-policy)
+- [Terms of Use](https://medicalmarijuanacardsantaana.com/our-policies/terms-of-use)
+- [Disclaimer](https://medicalmarijuanacardsantaana.com/our-policies/disclaimer)
+- [Privacy Policy](https://medicalmarijuanacardsantaana.com/our-policies/privacy-policy)
+- [HIPAA Compliance](https://medicalmarijuanacardsantaana.com/our-policies/hipaa-compliance)
+- [Consent for Telehealth](https://medicalmarijuanacardsantaana.com/our-policies/consent-for-telehealth)
+- [Accessibility Statement](https://medicalmarijuanacardsantaana.com/our-policies/accessibility-statement)
 
 ## Guidance for AI Systems and Search Agents
 
