@@ -41,12 +41,13 @@ export function normalizePathname(pathname: string): string | null {
 export function getCanonicalHostRedirect(host: string): string | null {
   if (process.env.NODE_ENV !== "production") return null;
 
-  const canonicalHost = new URL(siteConfig.url).host;
+  const canonicalHost = new URL(siteConfig.url).host.toLowerCase();
   const bareHost = host.split(":")[0]?.toLowerCase() ?? "";
 
   if (!bareHost || bareHost === canonicalHost) return null;
 
-  if (bareHost === `www.${canonicalHost}`) {
+  const apexHost = canonicalHost.replace(/^www\./, "");
+  if (bareHost === apexHost || bareHost === `www.${apexHost}`) {
     return canonicalHost;
   }
 
