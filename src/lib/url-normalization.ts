@@ -2,7 +2,9 @@ import { siteConfig } from "@/data/site";
 
 /** Canonical site origin without trailing slash, e.g. https://example.com */
 export function getCanonicalOrigin() {
-  return siteConfig.url.replace(/\/$/, "");
+  const url = new URL(siteConfig.url);
+  url.hostname = url.hostname.replace(/^www\./i, "");
+  return url.origin;
 }
 
 /** Build an absolute canonical URL for a path segment ("" or "/about-us"). */
@@ -41,7 +43,7 @@ export function normalizePathname(pathname: string): string | null {
 export function getCanonicalHostRedirect(host: string): string | null {
   if (process.env.NODE_ENV !== "production") return null;
 
-  const canonicalHost = new URL(siteConfig.url).host.toLowerCase();
+  const canonicalHost = new URL(getCanonicalOrigin()).host.toLowerCase();
   const bareHost = host.split(":")[0]?.toLowerCase() ?? "";
 
   if (!bareHost || bareHost === canonicalHost) return null;
