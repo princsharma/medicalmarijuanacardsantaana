@@ -8,7 +8,13 @@ export type Crumb = {
   href?: string;
 };
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export function Breadcrumbs({
+  items,
+  includeJsonLd = true,
+}: {
+  items: Crumb[];
+  includeJsonLd?: boolean;
+}) {
   const allItems: Crumb[] = [{ label: "Home", href: "/" }, ...items];
 
   const breadcrumbJsonLd = {
@@ -48,12 +54,14 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           ))}
         </ol>
       </Container>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
+      {includeJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      ) : null}
     </nav>
   );
 }

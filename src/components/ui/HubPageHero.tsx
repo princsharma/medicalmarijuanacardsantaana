@@ -17,6 +17,7 @@ type HubPageHeroProps = {
   media?: React.ReactNode;
   actions?: React.ReactNode;
   className?: string;
+  id?: string;
 };
 
 export function HubPageHero({
@@ -29,11 +30,13 @@ export function HubPageHero({
   media,
   actions,
   className,
+  id,
 }: HubPageHeroProps) {
   const isSplit = align === "split" && media;
 
   return (
     <section
+      id={id}
       className={cn(
         "relative overflow-hidden bg-[#f5f6f0] py-16 sm:py-20 lg:py-24",
         className

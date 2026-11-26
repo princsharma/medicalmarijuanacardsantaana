@@ -18,20 +18,15 @@ import {
 } from "@/data/contributors";
 import { formatBlogDateLong } from "@/data/blog";
 import { CtaSection } from "@/components/sections/CtaSection";
-import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/data/site";
-import { getCanonicalUrl } from "@/lib/url-normalization";
-
 type ContributorProfileContentProps = {
   contributor: Contributor;
 };
 
 export function ContributorProfileContent({ contributor }: ContributorProfileContentProps) {
   const posts = getPostsForContributor(contributor.slug);
-  const profileUrl = getCanonicalUrl(`/our-authors/${contributor.slug}`);
   const firstName = contributorFirstName(contributor);
   const about = contributor.about?.length ? contributor.about : [contributor.bio];
   const glance = contributor.glance ?? [];
@@ -43,26 +38,8 @@ export function ContributorProfileContent({ contributor }: ContributorProfileCon
     .join("")
     .toUpperCase();
 
-  const personJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: contributorDisplayName(contributor),
-    jobTitle: contributor.role,
-    description: contributor.shortBio,
-    url: profileUrl,
-    worksFor: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    ...(contributor.photo ? { image: getCanonicalUrl(contributor.photo) } : {}),
-    ...(contact?.email ? { email: contact.email } : {}),
-  };
-
   return (
     <>
-      <JsonLd data={personJsonLd} />
-
       <section className="relative overflow-hidden bg-[#f2f5ef] py-12 sm:py-16 lg:py-20">
         <div
           className="pointer-events-none absolute -right-32 -top-44 size-[32rem] rounded-full bg-brand-100/70 blur-3xl"

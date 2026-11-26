@@ -13,6 +13,7 @@ import {
   Users,
   Video,
 } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Accordion } from "@/components/ui/Accordion";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
@@ -21,6 +22,9 @@ import { HubPageHero, HubSectionIntro } from "@/components/ui/HubPageHero";
 import { DoctorsGrid } from "@/components/doctors/DoctorsGrid";
 import { doctorHubFaqs, doctors } from "@/data/doctors";
 import { buildHubMetadata } from "@/lib/og/hub-metadata";
+import { buildDoctorsHubJsonLd } from "@/lib/seo/doctors-hub-jsonld";
+
+const doctorsHubJsonLd = buildDoctorsHubJsonLd();
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildHubMetadata({
@@ -102,9 +106,11 @@ export default function DoctorsPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: "Our Doctors" }]} />
+      <JsonLd data={doctorsHubJsonLd} />
+      <Breadcrumbs items={[{ label: "Our Doctors" }]} includeJsonLd={false} />
 
       <HubPageHero
+        id="hero"
         align="split"
         eyebrow="Meet your medical team"
         badgeIcon={Stethoscope}
@@ -117,9 +123,9 @@ export default function DoctorsPage() {
           { icon: BadgeCheck, label: "Licensed in California" },
         ]}
         actions={
-          <>
+          <div id="apply" className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button
-              href="#apply"
+              href="#cta"
               size="lg"
               className="rounded-full bg-[#123c31] px-7 shadow-lg shadow-[#123c31]/15 hover:bg-[#0c3027]"
             >
@@ -132,7 +138,7 @@ export default function DoctorsPage() {
             >
               Meet the physicians
             </a>
-          </>
+          </div>
         }
         media={
           <div className="relative">
@@ -244,7 +250,7 @@ export default function DoctorsPage() {
         </Container>
       </section>
 
-      <section className="bg-[#f7f6f1] py-16 sm:py-20">
+      <section id="howto" className="bg-[#f7f6f1] py-16 sm:py-20">
         <Container>
           <HubSectionIntro
             eyebrow="What to expect"
@@ -258,7 +264,11 @@ export default function DoctorsPage() {
               aria-hidden="true"
             />
             {evaluationSteps.map(({ icon: Icon, title, text }, index) => (
-              <li key={title} className="relative flex gap-5 pb-8 last:pb-0 sm:gap-6">
+              <li
+                key={title}
+                id={`step-${index + 1}`}
+                className="relative flex gap-5 pb-8 last:pb-0 sm:gap-6"
+              >
                 <span className="relative z-[1] flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-brand-200 bg-white text-[#15503f] shadow-sm">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
@@ -275,7 +285,7 @@ export default function DoctorsPage() {
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-[#123c31] py-16 text-white sm:py-20">
+      <section id="cta" className="relative overflow-hidden bg-[#123c31] py-16 text-white sm:py-20">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(45,212,191,0.12),_transparent_50%)]"
           aria-hidden="true"
@@ -305,7 +315,7 @@ export default function DoctorsPage() {
         </Container>
       </section>
 
-      <section className="bg-[#eaf1e9] py-16 sm:py-20">
+      <section id="faq" className="bg-[#eaf1e9] py-16 sm:py-20">
         <Container>
           <HubSectionIntro
             eyebrow="Here to help"

@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import { ContributorCard } from "@/components/authors/ContributorCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { DoctorCard } from "@/components/doctors/DoctorCard";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -20,6 +21,7 @@ import { blogPosts } from "@/data/blog";
 import { contributors, contributorsHubContent } from "@/data/contributors";
 import { doctors } from "@/data/doctors";
 import { buildHubMetadata } from "@/lib/og/hub-metadata";
+import { buildAuthorsHubJsonLd } from "@/lib/seo/authors-hub-jsonld";
 
 const AUTHORS_HUB_HERO = "/media/authors hub.webp";
 
@@ -32,12 +34,15 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
+const authorsHubJsonLd = buildAuthorsHubJsonLd();
+
 export default function OurAuthorsPage() {
   const { eyebrow, title, description, standardsTitle, standards } = contributorsHubContent;
 
   return (
     <>
-      <Breadcrumbs items={[{ label: "Our Authors" }]} />
+      <JsonLd data={authorsHubJsonLd} />
+      <Breadcrumbs items={[{ label: "Our Authors" }]} includeJsonLd={false} />
 
       <HubPageHero
         align="split"

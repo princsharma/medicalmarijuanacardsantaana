@@ -14,10 +14,33 @@ export type ContributorContact = {
   instagramHref?: string;
 };
 
+export type ContributorProfileDates = {
+  dateCreated?: string;
+  dateModified?: string;
+  lastReviewed?: string;
+};
+
+export type ContributorSchemaOccupation = {
+  name: string;
+  description?: string;
+};
+
+export type ContributorSchema = {
+  profilePageDescription?: string;
+  personDescription?: string;
+  knowsAbout?: string[];
+  familyName?: string;
+  occupations?: ContributorSchemaOccupation[];
+  alumniOfUrl?: string;
+  includeExperienceYears?: boolean;
+};
+
 export type Contributor = {
   slug: string;
   name: string;
   credential?: string;
+  profileDates?: ContributorProfileDates;
+  schema?: ContributorSchema;
   credentialLine?: string;
   role: string;
   tagline: string;
@@ -63,6 +86,11 @@ export const contributors: Contributor[] = [
   {
     slug: "octavia-wyche",
     name: "Octavia Wyche",
+    profileDates: {
+      dateCreated: "2026-01-15",
+      dateModified: "2026-05-01",
+      lastReviewed: "2026-05-01",
+    },
     photo: "/media/octavia-wyche.webp",
     credentialLine: "Paralegal Certified • Healthcare & Regulatory Content",
     role: "Medical Writer",
@@ -126,11 +154,40 @@ export const contributors: Contributor[] = [
       instagramLabel: "Octavia the Writer • Instagram",
     },
     seoDescription:
-      "Octavia Wyche — medical writer and paralegal-certified documentation specialist for Medical Marijuana Card Santa Ana. Healthcare, regulatory, and medical marijuana education.",
+      "Octavia Wyche — medical writer and paralegal-certified documentation specialist for Medical Marijuana Card Santa Ana.",
+    schema: {
+      includeExperienceYears: true,
+    },
   },
   {
     slug: "robert-d-saint-laurent",
     name: "Robert D. Saint Laurent",
+    profileDates: {
+      dateCreated: "2026-01-15",
+      dateModified: "2026-05-01",
+      lastReviewed: "2026-05-01",
+    },
+    schema: {
+      personDescription:
+        "Robert D. Saint Laurent is an experienced health and medical content writer and editorial specialist with over three decades of professional experience in content development, education, and fitness sciences. He brings a clear, research-driven, and audience-centered approach to content creation that emphasizes accuracy, clarity, and reader engagement.",
+      knowsAbout: [
+        "Health and medical writing",
+        "Editorial quality assurance",
+        "Educational content development",
+        "Fitness sciences and wellness",
+        "Evidence-based healthcare",
+      ],
+      familyName: "Saint Laurent",
+      alumniOfUrl: "https://www.bridgew.edu/",
+      occupations: [
+        { name: "Health & Medical Content Writer" },
+        {
+          name: "Editorial Specialist",
+          description: "Content accuracy and quality assurance",
+        },
+      ],
+      includeExperienceYears: false,
+    },
     photo: "/media/robert-d-saint-laurent.webp",
     credential: "M.Ed.",
     credentialLine: "Health & Medical Content Writer • Editorial Specialist",
@@ -219,4 +276,11 @@ export function getPostsForContributor(slug: string) {
   return blogPosts.filter(
     (post) => post.author === contributor.name || post.reviewer === contributor.name
   );
+}
+
+export function getAuthoredPostsForContributor(slug: string) {
+  const contributor = getContributorBySlug(slug);
+  if (!contributor) return [];
+
+  return blogPosts.filter((post) => post.author === contributor.name);
 }

@@ -45,6 +45,16 @@ const nextConfig: NextConfig = {
         destination: "/doctors/rick-rieser",
         permanent: true,
       },
+      {
+        source:"/blog",
+        destination:"/",
+        permanent:true,
+      },
+      {
+        source:"/blog/is-marijuana-legal-in-california",
+        destination:"/",
+        permanent:true,
+      }
     ];
   },
 };

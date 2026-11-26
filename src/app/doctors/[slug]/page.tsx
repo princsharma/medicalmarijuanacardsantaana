@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { DoctorProfileContent } from "@/components/doctors/DoctorProfileContent";
 import { doctors, doctorDisplayName, getDoctorBySlug } from "@/data/doctors";
 import { getDoctorProfile } from "@/data/doctor-profiles";
 import { getDoctorSlugOgImagePath } from "@/lib/og/doctor-slug";
 import { buildMetadata } from "@/lib/seo";
+import { buildDoctorProfileJsonLd } from "@/lib/seo/doctor-profile-jsonld";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -43,13 +45,17 @@ export default async function DoctorProfilePage({ params }: PageProps) {
 
   if (!doctor || !profile) notFound();
 
+  const doctorProfileJsonLd = buildDoctorProfileJsonLd(doctor, profile);
+
   return (
     <>
+      <JsonLd data={doctorProfileJsonLd} />
       <Breadcrumbs
         items={[
           { label: "Our Doctors", href: "/doctors" },
           { label: doctor.name },
         ]}
+        includeJsonLd={false}
       />
       <DoctorProfileContent doctor={doctor} profile={profile} />
     </>

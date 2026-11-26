@@ -25,7 +25,7 @@ function CardShine() {
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section id="apply" className="relative overflow-hidden py-16 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dot-pattern opacity-20" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-50/40 via-white to-[#FAFAF7]" />
 
