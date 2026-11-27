@@ -3,7 +3,7 @@ import { contributors } from "@/data/contributors";
 import { policyPages } from "@/data/policies";
 import { doctors } from "@/data/doctors";
 import { siteConfig } from "@/data/site";
-import { getCanonicalOrigin } from "@/lib/url-normalization";
+import { getCanonicalOrigin, withTrailingSlash } from "@/lib/url-normalization";
 
 const STATIC_PAGES = [
   "",
@@ -56,31 +56,36 @@ export function resolveSitemapBaseUrl(
   return getRequestUrl(request, getHeader).origin;
 }
 
+function sitemapPathUrl(origin: string, path: string) {
+  const route = withTrailingSlash(path === "" ? "/" : path);
+  return `${origin.replace(/\/$/, "")}${route}`;
+}
+
 export function getSitemapEntries(baseUrl: string): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const origin = baseUrl.replace(/\/$/, "");
 
   return [
     ...STATIC_PAGES.map((path) => ({
-      url: `${origin}${path}`,
+      url: sitemapPathUrl(origin, path),
       lastModified,
       changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "" ? 1 : path === "/contact-us" ? 0.8 : 0.6,
     })),
     ...doctors.map((doctor) => ({
-      url: `${origin}/doctors/${doctor.slug}`,
+      url: sitemapPathUrl(origin, `/doctors/${doctor.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
     ...contributors.map((contributor) => ({
-      url: `${origin}/our-authors/${contributor.slug}`,
+      url: sitemapPathUrl(origin, `/our-authors/${contributor.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.65,
     })),
     ...policyPages.map((policy) => ({
-      url: `${origin}/our-policies/${policy.slug}`,
+      url: sitemapPathUrl(origin, `/our-policies/${policy.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.5,

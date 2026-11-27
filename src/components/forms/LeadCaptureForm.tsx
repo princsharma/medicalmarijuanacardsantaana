@@ -68,6 +68,7 @@ type LeadCaptureFormProps = {
   priceSuffix?: string;
 };
 
+
 export function LeadCaptureForm({
   className,
   submitLabel = "Get Your Card",
@@ -140,7 +141,7 @@ export function LeadCaptureForm({
 
     try {
       sendGTMEvent({
-        event: "heallyValidatedSubmit",
+        event: "santa_ana_form_submitted",
         utm_source: utmSource,
       });
     } catch {

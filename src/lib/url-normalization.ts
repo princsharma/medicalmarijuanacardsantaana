@@ -7,17 +7,42 @@ export function getCanonicalOrigin() {
   return url.origin;
 }
 
+/** True when the last path segment looks like a static file (has an extension). */
+function isFilePath(pathname: string): boolean {
+  const segment = pathname.replace(/\/+$/, "").split("/").pop() ?? "";
+  return /\.[a-z0-9]{1,8}$/i.test(segment);
+}
+
+/** Add a trailing slash on indexable routes; keep assets and bare `/` as-is. */
+export function withTrailingSlash(pathname: string): string {
+  if (pathname === "/" || pathname === "") {
+    return "/";
+  }
+  const bare = pathname.replace(/\/+$/, "");
+  if (isFilePath(bare)) {
+    return bare;
+  }
+  return `${bare}/`;
+}
+
 /** Build an absolute canonical URL for a path segment ("" or "/about-us"). */
 export function getCanonicalUrl(path = "") {
-  const normalizedPath = path.startsWith("/") ? path : path ? `/${path}` : "";
+  const hashIndex = path.indexOf("#");
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : "";
+  const pathOnly = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+
+  const normalizedPath = pathOnly.startsWith("/") ? pathOnly : pathOnly ? `/${pathOnly}` : "";
+
   if (normalizedPath === "" || normalizedPath === "/") {
-    return `${getCanonicalOrigin()}/`;
+    return `${getCanonicalOrigin()}/${hash}`;
   }
-  return `${getCanonicalOrigin()}${normalizedPath.replace(/\/+$/, "")}`;
+
+  const routePath = withTrailingSlash(normalizedPath);
+  return `${getCanonicalOrigin()}${routePath}${hash}`;
 }
 
 /**
- * Normalize a pathname for SEO: lowercase, collapse slashes, remove trailing slash.
+ * Normalize a pathname for SEO: lowercase, collapse slashes, enforce trailing slash on routes.
  * Returns null when no change is needed.
  */
 export function normalizePathname(pathname: string): string | null {
@@ -32,8 +57,10 @@ export function normalizePathname(pathname: string): string | null {
     normalized = normalized.replace(/\/{2,}/g, "/");
   }
 
-  if (normalized.length > 1 && normalized.endsWith("/")) {
-    normalized = normalized.slice(0, -1);
+  const withSlash = withTrailingSlash(normalized);
+
+  if (withSlash !== normalized) {
+    normalized = withSlash;
   }
 
   return normalized === pathname ? null : normalized;

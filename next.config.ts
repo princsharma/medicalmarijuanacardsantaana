@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /** Keep one indexable URL shape: no trailing slashes on routes. */
-  trailingSlash: false,
+  /** Keep one indexable URL shape: trailing slashes on routes (e.g. /our-authors/). */
+  trailingSlash: true,
   async redirects() {
     return [
       {
@@ -53,6 +53,21 @@ const nextConfig: NextConfig = {
       {
         source:"/blog/is-marijuana-legal-in-california",
         destination:"/",
+        permanent:true,
+      },
+      {
+        source:"/shipping",
+        destination:"/our-policies/shipping-policy",
+        permanent:true,
+      },
+      {
+        source:"/information",
+        destination:"/",
+        permanent:true,
+      },
+      {
+        source:"/contact",
+        destination:"/contact-us",
         permanent:true,
       }
     ];
